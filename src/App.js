@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import './App.css';
 import Card from './components/Card'
 
+
+// DEFAULTS
 const NUMBER_OF_CARDS = 2
 const MAX_HEIGHT = 500;
 const MAX_HEIGHT_BASIC_CARD = 150 + 5 + 1
@@ -14,6 +16,7 @@ class App extends Component {
   constructor(props) {
     super(props)
 
+    // Setup grid size
     const initialGrid = new Array(NUMBER_OF_CARDS).fill(0, 0, NUMBER_OF_CARDS)
 
     this.state = {
@@ -34,6 +37,7 @@ class App extends Component {
     })
   }
 
+  // deal with ordering of grid when expanded
   updateExpandGrid(updateKey) {
     const { expandedGrid, basicGrid } = this.state;
     const focusedGridCopy =  [...expandedGrid]
@@ -50,13 +54,8 @@ class App extends Component {
     const node = this.basicGrid;
     const basicCardArea = MAX_HEIGHT_BASIC_CARD * MAX_WIDTH_BASIC_CARD
     const totalBasicCards = basicGrid.length
-    console.log(totalBasicCards)
     const totalAreaRequired = basicCardArea * totalBasicCards
-    console.log(totalAreaRequired)
     const basicGridWidth = totalAreaRequired / MAX_HEIGHT
-    if (node.current) {
-      console.log(node.current.clientHeight)
-    }
     return (
       <div className="App">
         <div className="App-header">
